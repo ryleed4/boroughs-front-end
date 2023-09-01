@@ -6,7 +6,7 @@ export async function getAuthors(token) {
       method: "GET",
       headers: {
         "Content-Type": "application.json",
-        authorization: `Bearer ${token}`,
+        authorization: token,
       },
     });
     const authors = await response.json();
