@@ -5,11 +5,9 @@ import useAuth from "../useAuth";
 function Authors() {
   const [authors, setAuthors] = useState([]);
   const { token } = useAuth();
-  console.log("token from authors", token);
   useEffect(() => {
     async function getAllAuthors() {
       const response = await getAuthors(token);
-      console.log("response: ", response);
       setAuthors(response);
     }
     getAllAuthors();
@@ -20,11 +18,15 @@ function Authors() {
       <h2>Authors</h2>
       {authors.map((author) => {
         return (
-          <div>
-            <p>
-              Name: {author.name} Country: {author.country} State:{" "}
-              {author.state} Street Address: {author.streetAddress}
-            </p>
+          <div key={author.id}>
+            <p>Name: {author.name}</p>
+            <p>Id: {author.id}</p>
+            <p>Original Id: {author.originalId}</p>
+            <p>Country: {author.country}</p>
+            <p>State: {author.state} </p>
+            <p>Street Address: {author.streetAddress}</p>
+            <p>Zip Code: {author.zip}</p>
+            <p>Email: {author.email}</p>
           </div>
         );
       })}

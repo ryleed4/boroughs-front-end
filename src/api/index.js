@@ -16,3 +16,20 @@ export async function getAuthors(token) {
     console.error(error);
   }
 }
+
+export async function getBooks(token) {
+  try {
+    const response = await fetch(`${baseUrl}/books`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application.json",
+        authorization: token,
+      },
+    });
+    const books = await response.json();
+    console.log(books);
+    return books;
+  } catch (error) {
+    console.error(error);
+  }
+}
