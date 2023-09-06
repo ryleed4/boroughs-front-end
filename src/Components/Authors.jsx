@@ -12,24 +12,26 @@ function Authors() {
     }
     getAllAuthors();
   }, []);
-  console.log("authors: ", authors);
+
   return (
     <div>
       <h2>Authors</h2>
-      {authors.map((author) => {
-        return (
-          <div key={author.id}>
-            <p>Name: {author.name}</p>
-            <p>Id: {author.id}</p>
-            <p>Original Id: {author.originalId}</p>
-            <p>Country: {author.country}</p>
-            <p>State: {author.state} </p>
-            <p>Street Address: {author.streetAddress}</p>
-            <p>Zip Code: {author.zip}</p>
-            <p>Email: {author.email}</p>
-          </div>
-        );
-      })}
+      <div className="all-authors-div">
+        {authors.map((author) => {
+          return (
+            <div className="card" key={author.id}>
+              <p>Name: {author.name}</p>
+              <p>Id: {author.id}</p>
+              <p>Original Id: {author.originalId}</p>
+              <p>Country: {author.country}</p>
+              <p>State: {author.state} </p>
+              <p>Street Address: {author.streetAddress}</p>
+              <p>Zip Code: {author.zip}</p>
+              <p>Email: {author.email}</p>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

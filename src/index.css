@@ -21,3 +21,15 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
+
+.all-authors-div,
+.all-books-div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.card {
+  background-color: #171717;
+  padding: 1rem;
+}
