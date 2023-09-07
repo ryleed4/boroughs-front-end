@@ -33,3 +33,75 @@ export async function getBooks(token) {
     console.error(error);
   }
 }
+
+export async function createAuthor(
+  city,
+  country,
+  email,
+  id,
+  name,
+  originalId,
+  state,
+  streetAddress,
+  zip,
+  token
+) {
+  try {
+    const response = await fetch(`${baseUrl}/authors`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application.json",
+        authorization: token,
+      },
+      body: JSON.stringify({
+        post: {
+          city,
+          country,
+          email,
+          id,
+          name,
+          originalId,
+          state,
+          streetAddress,
+          zip,
+        },
+      }),
+    });
+    const result = response.json();
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export async function createBook(
+  coverPriceRoyalty,
+  id,
+  initialSales,
+  originalId,
+  title,
+  token
+) {
+  try {
+    const response = await fetch(`${baseUrl}/books`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application.json",
+        authorization: token,
+      },
+      body: JSON.stringify({
+        post: {
+          coverPriceRoyalty,
+          id,
+          initialSales,
+          originalId,
+          title,
+        },
+      }),
+    });
+    const result = response.json();
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+}

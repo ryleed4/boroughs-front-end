@@ -16,7 +16,7 @@ function Books() {
 
   return (
     <div>
-      <h2>Books</h2>
+      <h1>Books</h1>
       <div className="all-books-div">
         {books.map((book) => {
           return (

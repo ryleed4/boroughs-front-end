@@ -15,7 +15,7 @@ function Authors() {
 
   return (
     <div>
-      <h2>Authors</h2>
+      <h1>Authors</h1>
       <div className="all-authors-div">
         {authors.map((author) => {
           return (
@@ -25,6 +25,7 @@ function Authors() {
               <p>Original Id: {author.originalId}</p>
               <p>Country: {author.country}</p>
               <p>State: {author.state} </p>
+              <p>City: {author.city}</p>
               <p>Street Address: {author.streetAddress}</p>
               <p>Zip Code: {author.zip}</p>
               <p>Email: {author.email}</p>
