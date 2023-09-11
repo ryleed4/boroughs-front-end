@@ -17,18 +17,18 @@ export async function getAuthors(token) {
   }
 }
 
-export async function getBooks(token) {
+export async function getAuthorById(token, id) {
   try {
-    const response = await fetch(`${baseUrl}/books`, {
+    const response = await fetch(`${baseUrl}/authors/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application.json",
         authorization: token,
       },
     });
-    const books = await response.json();
-    console.log(books);
-    return books;
+    const author = await response.json();
+    console.log(author);
+    return author;
   } catch (error) {
     console.error(error);
   }
@@ -54,52 +54,56 @@ export async function createAuthor(
         authorization: token,
       },
       body: JSON.stringify({
-        post: {
-          city,
-          country,
-          email,
-          id,
-          name,
-          originalId,
-          state,
-          streetAddress,
-          zip,
-        },
+        city,
+        country,
+        email,
+        id,
+        name,
+        originalId,
+        state,
+        streetAddress,
+        zip,
       }),
     });
-    const result = response.json();
+    const result = await response.json();
     return result;
   } catch (error) {
     console.error(error);
   }
 }
 
-export async function createBook(
-  coverPriceRoyalty,
+export async function updateAuthor(
+  city,
+  country,
+  email,
   id,
-  initialSales,
+  name,
   originalId,
-  title,
+  state,
+  streetAddress,
+  zip,
   token
 ) {
   try {
-    const response = await fetch(`${baseUrl}/books`, {
-      method: "POST",
+    const response = await fetch(`${baseUrl}/authors/${id}`, {
+      method: "PUT",
       headers: {
         "Content-Type": "application.json",
         authorization: token,
       },
       body: JSON.stringify({
-        post: {
-          coverPriceRoyalty,
-          id,
-          initialSales,
-          originalId,
-          title,
-        },
+        city,
+        country,
+        email,
+        id,
+        name,
+        originalId,
+        state,
+        streetAddress,
+        zip,
       }),
     });
-    const result = response.json();
+    const result = await response.json();
     return result;
   } catch (error) {
     console.error(error);

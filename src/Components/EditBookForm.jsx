@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { createBook } from "../api/books";
-import { useNavigate } from "react-router-dom";
+import { updateBook } from "../api/books";
+import { useNavigate, useParams } from "react-router-dom";
 import useAuth from "../useAuth";
 
-export default function CreateBookForm() {
+export default function EditBookForm() {
   const { token } = useAuth();
+  const { id } = useParams();
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
-  const [id, setId] = useState(0);
   const [coverPriceRoyalty, setCoverPriceRoyalty] = useState(false);
   const [initialSales, setInitialSales] = useState("");
   const [originalId, setOriginalId] = useState("");
@@ -15,7 +15,7 @@ export default function CreateBookForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const result = await createBook(
+      const result = await updateBook(
         coverPriceRoyalty,
         id,
         initialSales,
@@ -23,12 +23,6 @@ export default function CreateBookForm() {
         title,
         token
       );
-
-      setCoverPriceRoyalty(false);
-      setId("");
-      setInitialSales("");
-      setOriginalId("");
-      setTitle("");
       navigate("/books");
     } catch (error) {
       console.error(error);
@@ -37,7 +31,7 @@ export default function CreateBookForm() {
 
   return (
     <div>
-      <h2>Add a new book</h2>
+      <h2>Edit book</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="title">Title: </label>
@@ -46,16 +40,6 @@ export default function CreateBookForm() {
             name="title"
             onChange={(event) => {
               setTitle(event.target.value);
-            }}
-          />
-        </div>
-        <div>
-          <label htmlFor="id">Id: </label>
-          <input
-            type="text"
-            name="id"
-            onChange={(event) => {
-              setId(event.target.value);
             }}
           />
         </div>
@@ -89,7 +73,7 @@ export default function CreateBookForm() {
             Cover Price Royalty
           </label>
         </span>
-        <button type="submit">Add</button>
+        <button type="submit">Edit</button>
       </form>
     </div>
   );

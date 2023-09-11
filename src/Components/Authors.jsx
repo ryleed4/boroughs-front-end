@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
-import { getAuthors } from "../api";
+import { getAuthors } from "../api/authors";
 import useAuth from "../useAuth";
+import { useNavigate } from "react-router-dom";
 
 function Authors() {
+  const navigate = useNavigate();
   const [authors, setAuthors] = useState([]);
   const { token } = useAuth();
   useEffect(() => {
@@ -23,12 +25,20 @@ function Authors() {
               <p>Name: {author.name}</p>
               <p>Id: {author.id}</p>
               <p>Original Id: {author.originalId}</p>
-              <p>Country: {author.country}</p>
-              <p>State: {author.state} </p>
-              <p>City: {author.city}</p>
-              <p>Street Address: {author.streetAddress}</p>
-              <p>Zip Code: {author.zip}</p>
-              <p>Email: {author.email}</p>
+              <button
+                onClick={() => {
+                  navigate(`/authors/${author.id}`);
+                }}
+              >
+                See Details
+              </button>
+              <button
+                onClick={() => {
+                  navigate(`/edit-author/${author.id}`);
+                }}
+              >
+                Edit
+              </button>
             </div>
           );
         })}

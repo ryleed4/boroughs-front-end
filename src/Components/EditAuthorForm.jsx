@@ -1,13 +1,14 @@
 import { useState } from "react";
-import { createAuthor } from "../api/authors";
-import useAuth from "../useAuth";
-import { useNavigate } from "react-router-dom";
+import { updateAuthor } from "../api/authors";
 
-export default function CreateAuthorForm() {
+import useAuth from "../useAuth";
+import { useNavigate, useParams } from "react-router-dom";
+
+export default function EditAuthorForm() {
   const { token } = useAuth();
+  const { id } = useParams();
   const navigate = useNavigate();
   const [name, setName] = useState("");
-  const [id, setId] = useState(0);
   const [originalId, setOriginalId] = useState("");
   const [country, setCountry] = useState("");
   const [state, setState] = useState("");
@@ -16,10 +17,12 @@ export default function CreateAuthorForm() {
   const [zipCode, setZipCode] = useState("");
   const [email, setEmail] = useState("");
 
+  console.log(email);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const result = await createAuthor(
+      const result = await updateAuthor(
         city,
         country,
         email,
@@ -31,16 +34,7 @@ export default function CreateAuthorForm() {
         zipCode,
         token
       );
-
-      setCountry("");
-      setEmail("");
-      setId("");
-      setName("");
-      setOriginalId("");
-      setState("");
-      setCity("");
-      setStreetAddress("");
-      setZipCode("");
+      console.log(result);
       navigate("/authors");
     } catch (error) {
       console.error(error);
@@ -49,7 +43,7 @@ export default function CreateAuthorForm() {
 
   return (
     <div>
-      <h2>Add a new author</h2>
+      <h2>Edit author</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">Name: </label>
@@ -58,16 +52,6 @@ export default function CreateAuthorForm() {
             name="name"
             onChange={(event) => {
               setName(event.target.value);
-            }}
-          />
-        </div>
-        <div>
-          <label htmlFor="id">Id: </label>
-          <input
-            type="text"
-            name="id"
-            onChange={(event) => {
-              setId(event.target.value);
             }}
           />
         </div>
@@ -141,7 +125,7 @@ export default function CreateAuthorForm() {
             }}
           />
         </div>
-        <button type="submit">Add</button>
+        <button type="submit">Edit</button>
       </form>
     </div>
   );

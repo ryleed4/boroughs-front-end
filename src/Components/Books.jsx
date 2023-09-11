@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
-import { getBooks } from "../api";
+import { getBooks } from "../api/books";
 import useAuth from "../useAuth";
+import { useNavigate } from "react-router-dom";
 
 function Books() {
   const [books, setBooks] = useState([]);
   const { token } = useAuth();
+  const navigate = useNavigate();
   useEffect(() => {
     async function getAllBooks() {
       const response = await getBooks(token);
-      console.log("response ", response);
       setBooks(response);
     }
     getAllBooks();
@@ -26,6 +27,20 @@ function Books() {
               <p>Cover Price Royalty: {book.coverPriceRoyalty}</p>
               <p>Initial Sales: {book.initialSales}</p>
               <p>Original Id: {book.originalId}</p>
+              <button
+                onClick={() => {
+                  navigate(`/books/${book.id}`);
+                }}
+              >
+                See Details
+              </button>
+              <button
+                onClick={() => {
+                  navigate(`/edit-book/${id}`);
+                }}
+              >
+                Edit
+              </button>
             </div>
           );
         })}
