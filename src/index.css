@@ -15,6 +15,11 @@
 }
 
 body {
+  display: flex;
+  place-items: center;
+}
+
+.app {
   margin: 0;
   display: flex;
   place-items: center;
@@ -31,5 +36,45 @@ body {
 
 .card {
   background-color: #171717;
+  padding: 2rem;
+  min-width: 350px;
+  max-width: 450px;
+  align-self: center;
+}
+
+nav {
+  background-color: #171717;
+  position: sticky;
+  top: 0;
+  left: 0;
   padding: 1rem;
+  width: 90vw;
+}
+
+a {
+  padding: 1rem;
+  color: white;
+}
+
+a:hover {
+  color: lightgray;
+}
+
+button {
+  padding: 0.75rem;
+  background-color: #242424;
+  color: white;
+}
+button:hover {
+  background-color: #474545;
+}
+
+input {
+  background-color: #474545;
+  color: white;
+}
+
+input:hover {
+  background-color: #51505a;
+  color: white;
 }
