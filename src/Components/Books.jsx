@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 function Books() {
   const [books, setBooks] = useState([]);
+  const [searchParam, setSearchParam] = useState("");
   const { token } = useAuth();
   const navigate = useNavigate();
   useEffect(() => {
@@ -15,18 +16,28 @@ function Books() {
     getAllBooks();
   }, []);
 
+  const filteredBooks = books.filter((book) => {
+    return book.title.toLowerCase().includes(searchParam);
+  });
+  console.log("filtered posts: ", filteredBooks);
+  const booksToDisplay = searchParam ? filteredBooks : books;
+
   return (
     <div>
       <h1>Books</h1>
+      <input
+        type="text"
+        placeholder="search"
+        onChange={(event) => {
+          setSearchParam(event.target.value.toLowerCase());
+        }}
+      />
       <div className="all-books-div">
-        {books.map((book) => {
+        {booksToDisplay.map((book) => {
           return (
             <div className="card" key={book.id}>
               <p>Title: {book.title}</p>
               <p>Id: {book.id}</p>
-              <p>Cover Price Royalty: {book.coverPriceRoyalty}</p>
-              <p>Initial Sales: {book.initialSales}</p>
-              <p>Original Id: {book.originalId}</p>
               <button
                 onClick={() => {
                   navigate(`/books/${book.id}`);

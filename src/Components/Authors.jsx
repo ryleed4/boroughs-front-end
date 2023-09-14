@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 function Authors() {
   const navigate = useNavigate();
   const [authors, setAuthors] = useState([]);
+  const [searchParam, setSearchParam] = useState("");
   const { token } = useAuth();
   useEffect(() => {
     async function getAllAuthors() {
@@ -15,16 +16,28 @@ function Authors() {
     getAllAuthors();
   }, []);
 
+  const filteredAuthors = authors.filter((author) => {
+    return author.name.toLowerCase().includes(searchParam);
+  });
+  console.log("filtered posts: ", filteredAuthors);
+  const authorsToDisplay = searchParam ? filteredAuthors : authors;
+
   return (
     <div>
       <h1>Authors</h1>
+      <input
+        type="text"
+        placeholder="search"
+        onChange={(event) => {
+          setSearchParam(event.target.value.toLowerCase());
+        }}
+      />
       <div className="all-authors-div">
-        {authors.map((author) => {
+        {authorsToDisplay.map((author) => {
           return (
             <div className="card" key={author.id}>
               <p>Name: {author.name}</p>
               <p>Id: {author.id}</p>
-              <p>Original Id: {author.originalId}</p>
               <button
                 onClick={() => {
                   navigate(`/authors/${author.id}`);

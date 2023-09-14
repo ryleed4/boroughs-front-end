@@ -13,7 +13,7 @@ import useAuth from "./useAuth";
 
 function App() {
   const navigate = useNavigate();
-  const { token } = useAuth();
+  const { token, setToken } = useAuth();
   return (
     <div className="App">
       <nav>
