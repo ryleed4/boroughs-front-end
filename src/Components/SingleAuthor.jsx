@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { getAuthorById } from "../api/authors";
+import CreateBookForm from "./CreateBookForm";
 import useAuth from "../useAuth";
 import { useParams } from "react-router-dom";
 
@@ -34,6 +35,7 @@ export default function SingleAuthor() {
           </div>
           <h3>Books</h3>
           <div className="all-books-div">
+            <CreateBookForm id={singleAuthor.id} />
             {singleAuthor.books.map((book) => {
               return (
                 <div className="card" key={book.id}>

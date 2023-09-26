@@ -1,3 +1,5 @@
+import { json } from "react-router-dom";
+
 const baseUrl = "https://boroughs-back-end-346863d497fb.herokuapp.com/api";
 
 export async function getAuthors(token) {
@@ -38,9 +40,7 @@ export async function createAuthor(
   city,
   country,
   email,
-  id,
   name,
-  originalId,
   state,
   streetAddress,
   zip,
@@ -54,15 +54,13 @@ export async function createAuthor(
         authorization: token,
       },
       body: JSON.stringify({
-        city,
-        country,
-        email,
-        id,
-        name,
-        originalId,
-        state,
-        streetAddress,
-        zip,
+        city: city,
+        country: country,
+        email: email,
+        name: name,
+        state: state,
+        streetAddress: streetAddress,
+        zip: zip,
       }),
     });
     const result = await response.json();

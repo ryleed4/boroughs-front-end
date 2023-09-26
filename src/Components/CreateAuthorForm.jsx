@@ -7,8 +7,6 @@ export default function CreateAuthorForm() {
   const { token } = useAuth();
   const navigate = useNavigate();
   const [name, setName] = useState("");
-  const [id, setId] = useState(0);
-  const [originalId, setOriginalId] = useState("");
   const [country, setCountry] = useState("");
   const [state, setState] = useState("");
   const [city, setCity] = useState("");
@@ -23,9 +21,7 @@ export default function CreateAuthorForm() {
         city,
         country,
         email,
-        id,
         name,
-        originalId,
         state,
         streetAddress,
         zipCode,
@@ -34,9 +30,7 @@ export default function CreateAuthorForm() {
 
       setCountry("");
       setEmail("");
-      setId("");
       setName("");
-      setOriginalId("");
       setState("");
       setCity("");
       setStreetAddress("");
@@ -61,26 +55,7 @@ export default function CreateAuthorForm() {
             }}
           />
         </div>
-        <div>
-          <label htmlFor="id">Id: </label>
-          <input
-            type="text"
-            name="id"
-            onChange={(event) => {
-              setId(event.target.value);
-            }}
-          />
-        </div>
-        <div>
-          <label htmlFor="originalId">Original Id: </label>
-          <input
-            type="text"
-            name="originalId"
-            onChange={(event) => {
-              setOriginalId(event.target.value);
-            }}
-          />
-        </div>
+
         <div>
           <label htmlFor="country">Country: </label>
           <input

@@ -2,34 +2,30 @@ import { useState } from "react";
 import { createBook } from "../api/books";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../useAuth";
+import { useParams } from "react-router-dom";
 
 export default function CreateBookForm() {
+  const { id } = useParams();
   const { token } = useAuth();
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
-  const [id, setId] = useState(0);
-  const [coverPriceRoyalty, setCoverPriceRoyalty] = useState(false);
-  const [initialSales, setInitialSales] = useState("");
-  const [originalId, setOriginalId] = useState("");
+  const [coverPriceRoyalty, setCoverPriceRoyalty] = useState(0);
+  const [initialSales, setInitialSales] = useState(0);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       const result = await createBook(
         coverPriceRoyalty,
-        id,
         initialSales,
-        originalId,
         title,
+        id,
         token
       );
 
       setCoverPriceRoyalty(false);
-      setId("");
       setInitialSales("");
-      setOriginalId("");
       setTitle("");
-      navigate("/books");
     } catch (error) {
       console.error(error);
     }
@@ -50,16 +46,6 @@ export default function CreateBookForm() {
           />
         </div>
         <div>
-          <label htmlFor="id">Id: </label>
-          <input
-            type="text"
-            name="id"
-            onChange={(event) => {
-              setId(event.target.value);
-            }}
-          />
-        </div>
-        <div>
           <label htmlFor="initialSales">Initial Sales: </label>
           <input
             type="text"
@@ -70,25 +56,13 @@ export default function CreateBookForm() {
           />
         </div>
         <div>
-          <label htmlFor="originalId">Original Id: </label>
+          <label>Cover Price Royalty: </label>
           <input
             type="text"
-            name="originalId"
-            onChange={(event) => {
-              setOriginalId(event.target.value);
-            }}
+            name="coverPriceRoyalty"
+            onChange={(e) => setCoverPriceRoyalty(e.target.value)}
           />
         </div>
-        <span>
-          <input
-            type="checkbox"
-            name="coverPriceRoyalty"
-            onChange={(e) => setCoverPriceRoyalty(e.target.checked)}
-          />
-          <label style={{ marginLeft: "10px" }} htmlFor="coverPriceRoyalty">
-            Cover Price Royalty
-          </label>
-        </span>
         <button type="submit">Add</button>
       </form>
     </div>
