@@ -5,7 +5,7 @@ export async function getBooks(token) {
     const response = await fetch(`${baseUrl}/books`, {
       method: "GET",
       headers: {
-        "Content-Type": "application.json",
+        "Content-Type": "application/json",
         authorization: token,
       },
     });
@@ -22,7 +22,7 @@ export async function getBookById(token, id) {
     const response = await fetch(`${baseUrl}/books/${id}`, {
       method: "GET",
       headers: {
-        "Content-Type": "application.json",
+        "Content-Type": "application/json",
         authorization: token,
       },
     });
@@ -36,17 +36,17 @@ export async function getBookById(token, id) {
 
 export async function createBook(
   coverPriceRoyalty,
-  id,
   initialSales,
   originalId,
   title,
+  id,
   token
 ) {
   try {
-    const response = await fetch(`${baseUrl}/books`, {
+    const response = await fetch(`${baseUrl}/authors/${id}/ezBook`, {
       method: "POST",
       headers: {
-        "Content-Type": "application.json",
+        "Content-Type": "application/json",
         authorization: token,
       },
       body: JSON.stringify({
@@ -76,7 +76,7 @@ export async function updateBook(
     const response = await fetch(`${baseUrl}/books/${id}`, {
       method: "PUT",
       headers: {
-        "Content-Type": "application.json",
+        "Content-Type": "application/json",
         authorization: token,
       },
       body: JSON.stringify({

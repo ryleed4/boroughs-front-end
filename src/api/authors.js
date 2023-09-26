@@ -7,7 +7,7 @@ export async function getAuthors(token) {
     const response = await fetch(`${baseUrl}/authors`, {
       method: "GET",
       headers: {
-        "Content-Type": "application.json",
+        "Content-Type": "application/json",
         authorization: token,
       },
     });
@@ -24,7 +24,7 @@ export async function getAuthorById(token, id) {
     const response = await fetch(`${baseUrl}/authors/${id}`, {
       method: "GET",
       headers: {
-        "Content-Type": "application.json",
+        "Content-Type": "application/json",
         authorization: token,
       },
     });
@@ -50,7 +50,7 @@ export async function createAuthor(
     const response = await fetch(`${baseUrl}/authors`, {
       method: "POST",
       headers: {
-        "Content-Type": "application.json",
+        "Content-Type": "application/json",
         authorization: token,
       },
       body: JSON.stringify({
@@ -86,7 +86,7 @@ export async function updateAuthor(
     const response = await fetch(`${baseUrl}/authors/${id}`, {
       method: "PUT",
       headers: {
-        "Content-Type": "application.json",
+        "Content-Type": "application/json",
         authorization: token,
       },
       body: JSON.stringify({
