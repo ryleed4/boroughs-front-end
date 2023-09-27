@@ -2,10 +2,8 @@ import { useState } from "react";
 import { createBook } from "../api/books";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../useAuth";
-import { useParams } from "react-router-dom";
 
-export default function CreateBookForm() {
-  const { id } = useParams();
+export default function CreateBookForm({ id }) {
   const { token } = useAuth();
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
@@ -22,10 +20,12 @@ export default function CreateBookForm() {
         id,
         token
       );
+      console.log(result);
 
       setCoverPriceRoyalty(false);
       setInitialSales("");
       setTitle("");
+      navigate(`/authors/${id}`);
     } catch (error) {
       console.error(error);
     }

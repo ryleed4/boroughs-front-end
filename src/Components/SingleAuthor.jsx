@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { getAuthorById } from "../api/authors";
-import CreateBookForm from "./CreateBookForm";
+import { useNavigate } from "react-router-dom";
 import useAuth from "../useAuth";
 import { useParams } from "react-router-dom";
+import CreateBookForm from "./CreateBookForm";
 
 export default function SingleAuthor() {
+  const navigate = useNavigate();
   const [singleAuthor, setSingleAuthor] = useState();
   const { id } = useParams();
   const { token } = useAuth();

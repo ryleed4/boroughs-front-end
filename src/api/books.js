@@ -37,7 +37,6 @@ export async function getBookById(token, id) {
 export async function createBook(
   coverPriceRoyalty,
   initialSales,
-  originalId,
   title,
   id,
   token
@@ -51,10 +50,9 @@ export async function createBook(
       },
       body: JSON.stringify({
         coverPriceRoyalty,
-        id,
         initialSales,
-        originalId,
         title,
+        id,
       }),
     });
     const result = await response.json();
