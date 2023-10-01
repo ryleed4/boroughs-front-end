@@ -17,8 +17,6 @@ export default function EditAuthorForm() {
   const [zipCode, setZipCode] = useState("");
   const [email, setEmail] = useState("");
 
-  console.log(email);
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {

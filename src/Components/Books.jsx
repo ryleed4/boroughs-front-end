@@ -47,7 +47,7 @@ function Books() {
               </button>
               <button
                 onClick={() => {
-                  navigate(`/edit-book/${id}`);
+                  navigate(`/edit-book/${book.id}`);
                 }}
               >
                 Edit

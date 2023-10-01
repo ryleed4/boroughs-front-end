@@ -33,7 +33,7 @@ function App() {
         ) : null}
       </nav>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/Login" element={<Login />} />
         <Route path="/authors" element={<Authors />} />
         <Route path="/authors/:id" element={<SingleAuthor />} />
         <Route path="/books" element={<Books />} />

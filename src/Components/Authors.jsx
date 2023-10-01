@@ -19,7 +19,7 @@ function Authors() {
   const filteredAuthors = authors.filter((author) => {
     return author.name.toLowerCase().includes(searchParam);
   });
-  console.log("filtered posts: ", filteredAuthors);
+  console.log("filtered authors: ", filteredAuthors);
   const authorsToDisplay = searchParam ? filteredAuthors : authors;
 
   return (
