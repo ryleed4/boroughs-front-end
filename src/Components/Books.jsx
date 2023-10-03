@@ -19,7 +19,7 @@ function Books() {
   const filteredBooks = books.filter((book) => {
     return book.title.toLowerCase().includes(searchParam);
   });
-  console.log("filtered posts: ", filteredBooks);
+  console.log("filtered books: ", filteredBooks);
   const booksToDisplay = searchParam ? filteredBooks : books;
 
   return (
