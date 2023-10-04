@@ -13,6 +13,7 @@ import QuarterlyReports from "./Components/QuarterlyReports";
 import useAuth from "./useAuth";
 import EditQuarterlyReport from "./Components/EditQuarterlyReport";
 import Files from "./Components/Files";
+import Records from "./Components/Records";
 
 function App() {
   const navigate = useNavigate();
@@ -25,6 +26,7 @@ function App() {
         {token ? <Link to="/forms">Forms</Link> : null}
         {token ? <Link to="/quarterly-reports">Quarterly Reports</Link> : null}
         {token ? <Link to="/files">Files</Link> : null}
+        {token ? <Link to="/records">Records</Link> : null}
         {token ? (
           <button
             onClick={() => {
@@ -52,6 +54,7 @@ function App() {
           element={<EditQuarterlyReport />}
         />
         <Route path="/files" element={<Files />} />
+        <Route path="/records" element={<Records />} />
       </Routes>
     </div>
   );

@@ -37,10 +37,10 @@ function EditQuarterlyReport() {
 
   return (
     <div>
-      <h2>Add a quarterly report</h2>
+      <h2>Edit a quarterly report</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="name">Name: </label>
+          <label>Name: </label>
           <input
             type="text"
             name="name"
@@ -60,7 +60,7 @@ function EditQuarterlyReport() {
           </label>
         </div>
         <div>
-          <label htmlFor="statementDate">Statement Date: </label>
+          <label>Statement Date: </label>
           <input
             type="text"
             name="statement-date"
@@ -70,14 +70,14 @@ function EditQuarterlyReport() {
           />
         </div>
         <div>
-          <label htmlFor="status">Status: </label>
+          <label>Status: </label>
           <input
             type="text"
             name="status"
             onChange={(e) => setStatus(e.target.value)}
           />
         </div>
-        <button type="submit">Add</button>
+        <button type="submit">Edit</button>
       </form>
     </div>
   );
