@@ -32,13 +32,19 @@ function Authors() {
           setSearchParam(event.target.value.toLowerCase());
         }}
       />
-      <div className="all-authors-div">
+      <div className="all-items-div">
         {authorsToDisplay.map((author) => {
           return (
-            <div className="card" key={author.id}>
+            <div className="single-item" key={author.id}>
               <p>Name: {author.name}</p>
               <p>Id: {author.id}</p>
-              <button
+              <p>Street Address: {author.streetAddress}</p>
+              <p>City: {author.city}</p>
+              <p>State: {author.state}</p>
+              <p>Country: {author.country}</p>
+              <p>Zip Code: {author.zip}</p>
+              <p>Email: {author.email}</p>
+              {/* <button
                 onClick={() => {
                   navigate(`/authors/${author.id}`);
                 }}
@@ -51,7 +57,7 @@ function Authors() {
                 }}
               >
                 Edit
-              </button>
+              </button> */}
             </div>
           );
         })}
