@@ -38,11 +38,37 @@
   align-self: center;
 }
 
-.single-item {
+.single-author-card {
+  background-color: #171717;
+}
+
+.single-author {
   background-color: #171717;
   font-size: 0.75rem;
   display: grid;
-  grid-template-columns: 1fr 4rem 1.5fr 1fr 1fr 1fr 100px 1fr;
+  grid-template-columns: repeat(8, 1fr);
+  border-bottom: 5px solid white;
+}
+
+.single-book {
+  background-color: #171717;
+  font-size: 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  border-bottom: 5px solid white;
+}
+
+.single-book-5 {
+  background-color: #171717;
+  font-size: 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border-bottom: 5px solid white;
+}
+
+.down-arrow {
+  background-color: #474545;
+  padding: 20px;
 }
 
 nav {
@@ -51,7 +77,7 @@ nav {
   top: 0;
   left: 0;
   padding: 1rem;
-  width: 90vw;
+  width: 100vw;
 }
 
 a {

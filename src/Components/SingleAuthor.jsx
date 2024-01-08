@@ -24,7 +24,7 @@ export default function SingleAuthor() {
       {singleAuthor && (
         <div>
           <h3>Author Information</h3>
-          <div className="card">
+          <div className="single-author">
             <p>Name: {singleAuthor.name}</p>
             <p>Id: {singleAuthor.id}</p>
             <p>Original Id: {singleAuthor.originalId}</p>
@@ -40,7 +40,7 @@ export default function SingleAuthor() {
             <CreateBookForm id={singleAuthor.id} />
             {singleAuthor.books.map((book) => {
               return (
-                <div className="card" key={book.id}>
+                <div className="single-book" key={book.id}>
                   <p>Title: {book.title}</p>
                   <p>Id: {book.id}</p>
                   <p>Initial Sales: {book.initialSales}</p>

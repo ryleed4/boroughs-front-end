@@ -35,23 +35,26 @@ function Authors() {
       <div className="all-items-div">
         {authorsToDisplay.map((author) => {
           return (
-            <div className="single-item" key={author.id}>
-              <p>Name: {author.name}</p>
-              <p>Id: {author.id}</p>
-              <p>Street Address: {author.streetAddress}</p>
-              <p>City: {author.city}</p>
-              <p>State: {author.state}</p>
-              <p>Country: {author.country}</p>
-              <p>Zip Code: {author.zip}</p>
-              <p>Email: {author.email}</p>
-              {/* <button
+            <div className="single-author-card" key={author.id}>
+              <div className="single-author">
+                <p>Name: {author.name}</p>
+                <p>Id: {author.id}</p>
+                <p>Street Address: {author.streetAddress}</p>
+                <p>City: {author.city}</p>
+                <p>State: {author.state}</p>
+                <p>Country: {author.country}</p>
+                <p>Zip Code: {author.zip}</p>
+                <p>Email: {author.email}</p>
+              </div>
+              <div
+                className="down-arrow"
                 onClick={() => {
                   navigate(`/authors/${author.id}`);
                 }}
               >
-                See Details
-              </button>
-              <button
+                More
+              </div>
+              {/* <button
                 onClick={() => {
                   navigate(`/edit-author/${author.id}`);
                 }}

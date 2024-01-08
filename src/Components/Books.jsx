@@ -35,23 +35,29 @@ function Books() {
       <div className="all-books-div">
         {booksToDisplay.map((book) => {
           return (
-            <div className="card" key={book.id}>
-              <p>Title: {book.title}</p>
-              <p>Id: {book.id}</p>
-              <button
+            <div className="single-book-div" key={book.id}>
+              <div className="single-book-5">
+                <p>Title: {book.title}</p>
+                <p>Id: {book.id}</p>
+                <p>Initial Sales: {book.initialSales}</p>
+                <p>Original Id: {book.originalId}</p>
+              </div>
+
+              <div
+                className="down-arrow"
                 onClick={() => {
                   navigate(`/books/${book.id}`);
                 }}
               >
-                See Details
-              </button>
-              <button
+                More
+              </div>
+              {/* <button
                 onClick={() => {
                   navigate(`/edit-book/${book.id}`);
                 }}
               >
                 Edit
-              </button>
+              </button> */}
             </div>
           );
         })}
