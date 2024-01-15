@@ -73,3 +73,20 @@ export async function editQuarterlyReport(
     console.error(error);
   }
 }
+
+export async function getQuarterlyReportById(token, id) {
+  try {
+    const response = await fetch(`${baseUrl}/quarterlyReports/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: token,
+      },
+    });
+    const quarterlyReport = await response.json();
+    console.log(quarterlyReport);
+    return quarterlyReport;
+  } catch (error) {
+    console.error(error);
+  }
+}

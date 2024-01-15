@@ -25,6 +25,13 @@ function QuarterlyReports() {
               <p>Statment Date: {quarterlyReport.statementdate}</p>
               <button
                 onClick={() => {
+                  navigate(`/quarterly-reports/${quarterlyReport.id}`);
+                }}
+              >
+                Files
+              </button>
+              <button
+                onClick={() => {
                   navigate(`/edit-quarterly-report/${quarterlyReport.id}`);
                 }}
               >

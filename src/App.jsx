@@ -10,6 +10,7 @@ import EditBookForm from "./Components/EditBookForm";
 import SingleAuthor from "./Components/SingleAuthor";
 import SingleBook from "./Components/SingleBook";
 import QuarterlyReports from "./Components/QuarterlyReports";
+import SingleQuarterlyReport from "./Components/SingleQuarterlyReport";
 import useAuth from "./useAuth";
 import EditQuarterlyReport from "./Components/EditQuarterlyReport";
 import Files from "./Components/Files";
@@ -25,8 +26,6 @@ function App() {
         {token ? <Link to="/books">Books</Link> : null}
         {token ? <Link to="/forms">Forms</Link> : null}
         {token ? <Link to="/quarterly-reports">Quarterly Reports</Link> : null}
-        {token ? <Link to="/files">Files</Link> : null}
-        {token ? <Link to="/records">Records</Link> : null}
         {token ? (
           <button
             onClick={() => {
@@ -50,11 +49,13 @@ function App() {
         <Route path="/edit-book/:id" element={<EditBookForm />} />
         <Route path="/quarterly-reports" element={<QuarterlyReports />} />
         <Route
+          path="/quarterly-reports/:id"
+          element={<SingleQuarterlyReport />}
+        />
+        <Route
           path="/edit-quarterly-report/:id"
           element={<EditQuarterlyReport />}
         />
-        <Route path="/files" element={<Files />} />
-        <Route path="/records" element={<Records />} />
       </Routes>
     </div>
   );

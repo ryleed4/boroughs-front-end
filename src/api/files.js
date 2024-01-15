@@ -1,8 +1,8 @@
 const baseUrl = "https://boroughs-back-end-346863d497fb.herokuapp.com/api";
 
-export async function getFiles(token) {
+export async function getFiles(token, id) {
   try {
-    const response = await fetch(`${baseUrl}/files`, {
+    const response = await fetch(`${baseUrl}/quarterlyReport/${id}/files`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

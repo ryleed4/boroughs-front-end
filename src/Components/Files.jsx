@@ -5,11 +5,12 @@ import { useNavigate } from "react-router-dom";
 
 function Files() {
   const [files, setFiles] = useState([]);
+  const { id } = useParams();
   const { token } = useAuth();
   const navigate = useNavigate();
   useEffect(() => {
     async function getAllFiles() {
-      const response = await getFiles(token);
+      const response = await getFiles(token, id);
       setFiles(response);
     }
     getAllFiles();
