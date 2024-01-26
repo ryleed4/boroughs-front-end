@@ -15,6 +15,7 @@ import useAuth from "./useAuth";
 import EditQuarterlyReport from "./Components/EditQuarterlyReport";
 import Files from "./Components/Files";
 import Records from "./Components/Records";
+import SingleFile from "./Components/SingleFile";
 
 function App() {
   const navigate = useNavigate();
@@ -55,6 +56,10 @@ function App() {
         <Route
           path="/edit-quarterly-report/:id"
           element={<EditQuarterlyReport />}
+        />
+        <Route
+          path="/quarterly-report/:id/files/:id"
+          element={<SingleFile />}
         />
       </Routes>
     </div>
